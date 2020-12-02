@@ -67,15 +67,22 @@ class AddressBook {
     }
 
     toString() {
-        return "Name: "+this.firstName+" "+ this.lastName+"\n"+"Mobile NO: "+this.phoneNum+"\n"
+        return "----------------------------------------------\n"
+                +"Name: "+this.firstName+" "+ this.lastName+"\n"+"Mobile NO: "+this.phoneNum+"\n"
                        +"Address: "+ this.city+" "+ this.state+" "+this.zip+"\n"+
-                        "Email: "+this.email
+                        "Email: "+this.email+
+                        "\n----------------------------------------------\n"
     }
 }
+
+let addressBook = new Array()
+
 try {
-    let firstAddrss = new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
-                         "Telangana", 509001, "kolimi.hariprasad@gmail.com")
-    console.log(firstAddrss.toString())
+    addressBook.push(new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
+                         "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
+    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Hyderabad",
+                         "Telangana", 500018, "Deeksha.ramesh@gmail.com"))
+    addressBook.forEach(address => console.log(address.toString()))
 } catch (e) {
     console.error(e)
 }
