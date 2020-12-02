@@ -1,3 +1,5 @@
+const prompt = require('prompt-sync')();
+
 class AddressBook {
 
     constructor(...params) {
@@ -82,7 +84,77 @@ try {
                          "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
     addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Hyderabad",
                          "Telangana", 500018, "Deeksha.ramesh@gmail.com"))
-    addressBook.forEach(address => console.log(address.toString()))
+    while(true) {
+        console.log("Enter Your choice")
+        console.log("1. Display Address")
+        console.log("2. Edit")
+        console.log("9. Exit")
+        let choice = prompt('Enter: ')
+        switch(choice) {
+            case '1':
+                addressBook.forEach(address => console.log(address.toString()));
+                break;
+            case '2':
+                findAddress()
+                break;
+            default:
+                break;
+        }
+        if(choice == 9){
+            break;
+        }
+    }
 } catch (e) {
     console.error(e)
+}
+function findAddress(){
+    let name = prompt("enter the first name to edit: ")
+    let index = addressBook.findIndex((address) => address.firstName === name)
+    while(true){
+        console.log("Enter Your choice to edit")
+        console.log("1. First Name")
+        console.log("2. Last Name")
+        console.log("3. Mobile Number")
+        console.log("4. City")
+        console.log("5. state")
+        console.log("6. Zip Code")
+        console.log("7. Email")
+        console.log("9. Exit")
+        let choice = prompt('Enter: ')
+        switch(choice){
+            case '1':
+                let fvalue = prompt('Enter New Value ')
+                addressBook[index].firstName = fvalue;
+                break;
+            case '2':
+                let lvalue = prompt('Enter New Value ')
+                addressBook[index].lastName = lvalue;
+                break;
+            case '3':
+                let pvalue = prompt('Enter New Value ')
+                addressBook[index].phoneNum = pvalue;
+                break;
+            case '4':
+                let cvalue = prompt('Enter New Value ')
+                addressBook[index].city = cvalue;
+                break;
+            case '5':
+                let svalue = prompt('Enter New Value ')
+                addressBook[index].state = svalue;
+                break;
+            case '6':
+                let zvalue = prompt('Enter New Value ')
+                addressBook[index].zip = zvalue;
+                break;
+            case '7':
+                let evalue = prompt('Enter New Value ')
+                addressBook[index].email = evalue;
+                break;
+            default:    
+                break;
+        }
+        if(choice == 9){
+            break;
+        }
+    }
 }
