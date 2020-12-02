@@ -206,7 +206,7 @@ function searchAddress(){
         let city = prompt("enter city: ")
         let persons = addressBook.filter(address => address.city == city)
         persons.forEach(person => console.log(person.toString()))
-    }else if (choice == 2) {
+    } else if (choice == 2) {
         let state = prompt("enter state: ")
         let persons = addressBook.filter(address => address.state == state)
         persons.forEach(person => console.log(person.toString()))
