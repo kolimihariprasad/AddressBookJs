@@ -219,9 +219,81 @@ function searchAddress(){
     } else console.log("Wrong Choice")
 }
 function sortAddress() {
+    console.log("1.Sort By First name")
+    console.log("2.Sort By City")
+    console.log("3.Sort By State")
+    console.log("4.Sort By Zip")
+    let choice = prompt("Enter: ")
+    switch(choice){
+        case "1":
+            sortByName();
+            break;
+        case "2":
+            sortBycity();
+            break;
+        case "3":
+            sortBystate();
+            break;
+        case "4":
+            sortByZip();
+            break;
+    }
+}
+
+function sortByName(){
     function compare(a, b) {
         const first = a.firstName.toUpperCase();
         const second = b.firstName.toUpperCase();
+      
+        let comparison = 0;
+        if (first > second) {
+          comparison = 1;
+        } else if (first < second) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      addressBook.sort(compare);
+      addressBook.forEach(address => console.log(address.toString()));
+}
+function sortBycity(){
+    function compare(a, b) {
+        const first = a.city.toUpperCase();
+        const second = b.city.toUpperCase();
+      
+        let comparison = 0;
+        if (first > second) {
+          comparison = 1;
+        } else if (first < second) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      addressBook.sort(compare);
+      addressBook.forEach(address => console.log(address.toString()));
+}
+
+function sortBystate(){
+    function compare(a, b) {
+        const first = a.state.toUpperCase();
+        const second = b.state.toUpperCase();
+      
+        let comparison = 0;
+        if (first > second) {
+          comparison = 1;
+        } else if (first < second) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      addressBook.sort(compare);
+      addressBook.forEach(address => console.log(address.toString()));
+}
+
+function sortByZip(){
+    function compare(a, b) {
+        const first = a.zip
+        const second = b.zip
       
         let comparison = 0;
         if (first > second) {
