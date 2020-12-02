@@ -82,14 +82,19 @@ let addressBook = new Array()
 try {
     addressBook.push(new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
                          "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
-    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Hyderabad",
-                         "Telangana", 500018, "Deeksha.ramesh@gmail.com"))
+    addressBook.push(new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
+                         "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
+    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Bangalore",
+                         "Karnataka", 560037, "Deeksha.ramesh@gmail.com"))
+    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Bangalore",
+                         "Karnataka", 560037, "Deeksha.ramesh@gmail.com"))
     while(true) {
         console.log("Enter Your choice")
         console.log("1. Display Address")
         console.log("2. Edit")
         console.log("3. Delete")
         console.log("4. Add New Address")
+        console.log("5. Search")
         console.log("9. Exit")
         let choice = prompt('Enter: ')
         switch(choice) {
@@ -105,6 +110,9 @@ try {
                 break;
             case '4':
                 addAddress()
+                break;
+            case '5':
+                searchAddress()
                 break;
             default:
                 break;
@@ -189,5 +197,18 @@ function addAddress(){
         let email = prompt("enter the email: ")
         addressBook.push(new AddressBook(name, lname, mbl, city, state, zip, email))
     }
-
+}
+function searchAddress(){
+    console.log("1. Search By City")
+    console.log("2. Search By State")
+    let choice = prompt("enter choice: ")
+    if(choice == 1) {
+        let city = prompt("enter city: ")
+        let persons = addressBook.filter(address => address.city == city)
+        persons.forEach(person => console.log(person.toString()))
+    }else if (choice == 2) {
+        let state = prompt("enter state: ")
+        let persons = addressBook.filter(address => address.state == state)
+        persons.forEach(person => console.log(person.toString()))
+    } else console.log("Wrong Choice")
 }
