@@ -93,6 +93,7 @@ try {
         let choice = prompt('Enter: ')
         switch(choice) {
             case '1':
+                console.log("Total Address in List: "+addressBook.length)
                 addressBook.forEach(address => console.log(address.toString()));
                 break;
             case '2':
