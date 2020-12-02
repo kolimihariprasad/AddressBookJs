@@ -88,6 +88,7 @@ try {
         console.log("Enter Your choice")
         console.log("1. Display Address")
         console.log("2. Edit")
+        console.log("3. Delete")
         console.log("9. Exit")
         let choice = prompt('Enter: ')
         switch(choice) {
@@ -96,6 +97,9 @@ try {
                 break;
             case '2':
                 findAddress()
+                break;
+            case '3':
+                deleteAddress()
                 break;
             default:
                 break;
@@ -157,4 +161,10 @@ function findAddress(){
             break;
         }
     }
+}
+function deleteAddress(){
+    let name = prompt("enter the first name to delete: ")
+    let index = addressBook.findIndex((address) => address.firstName === name)
+    console.log(index)
+    delete addressBook[index]
 }
