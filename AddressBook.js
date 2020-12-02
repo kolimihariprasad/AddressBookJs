@@ -89,6 +89,7 @@ try {
         console.log("1. Display Address")
         console.log("2. Edit")
         console.log("3. Delete")
+        console.log("4. Add New Address")
         console.log("9. Exit")
         let choice = prompt('Enter: ')
         switch(choice) {
@@ -101,6 +102,9 @@ try {
                 break;
             case '3':
                 deleteAddress()
+                break;
+            case '4':
+                addAddress()
                 break;
             default:
                 break;
@@ -166,6 +170,24 @@ function findAddress(){
 function deleteAddress(){
     let name = prompt("enter the first name to delete: ")
     let index = addressBook.findIndex((address) => address.firstName === name)
-    console.log(index)
     delete addressBook[index]
+}
+
+function addAddress(){
+    let index = 0
+    let name = prompt("enter the first name: ")
+    index = addressBook.find((address) => address.firstName === name)
+    console.log(index)
+    if(index != undefined){
+        console.log("Address Aleady Exist")
+    } else {
+        let lname = prompt("enter the last name: ")
+        let mbl = prompt("enter the phone number: ")
+        let city = prompt("enter the city: ")
+        let state = prompt("enter the state: ")
+        let zip = prompt("enter the Zip: ")
+        let email = prompt("enter the email: ")
+        addressBook.push(new AddressBook(name, lname, mbl, city, state, zip, email))
+    }
+
 }
