@@ -82,12 +82,12 @@ let addressBook = new Array()
 try {
     addressBook.push(new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
                          "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
-    addressBook.push(new AddressBook("Hari", "Prasad", 6301712467, "Mahabubnagar",
-                         "Telangana", 509001, "kolimi.hariprasad@gmail.com"))
-    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Bangalore",
+    addressBook.push(new AddressBook("Niharika", "Rao", 6301712467, "Hyderabad",
+                         "Telangana", 500018, "niharika@gmail.com"))
+    addressBook.push(new AddressBook("Deeksha", "Ramesh", 9036514630, "Bangalore",
                          "Karnataka", 560037, "Deeksha.ramesh@gmail.com"))
-    addressBook.push(new AddressBook("Deeksha", "Ramesh", 7036114363, "Bangalore",
-                         "Karnataka", 560037, "Deeksha.ramesh@gmail.com"))
+    addressBook.push(new AddressBook("Sanju", "Sri", 7253253999, "Bangalore",
+                         "Karnataka", 560033, "sanji.sri@gmail.com"))
     while(true) {
         console.log("Enter Your choice")
         console.log("1. Display Address")
@@ -95,6 +95,7 @@ try {
         console.log("3. Delete")
         console.log("4. Add New Address")
         console.log("5. Search")
+        console.log("6. Sort")
         console.log("9. Exit")
         let choice = prompt('Enter: ')
         switch(choice) {
@@ -113,6 +114,9 @@ try {
                 break;
             case '5':
                 searchAddress()
+                break;
+            case '6':
+                sortAddress()
                 break;
             default:
                 break;
@@ -213,4 +217,20 @@ function searchAddress(){
         persons.forEach(person => console.log(person.toString()))
         console.log("Number of Persons in "+state+" state: "+ persons.length)
     } else console.log("Wrong Choice")
+}
+function sortAddress() {
+    function compare(a, b) {
+        const first = a.firstName.toUpperCase();
+        const second = b.firstName.toUpperCase();
+      
+        let comparison = 0;
+        if (first > second) {
+          comparison = 1;
+        } else if (first < second) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      addressBook.sort(compare);
+      addressBook.forEach(address => console.log(address.toString()));
 }
